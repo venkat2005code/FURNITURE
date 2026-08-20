@@ -56,7 +56,8 @@
       <button class="ctrl-btn" id="dirToggleMob" title="Toggle RTL/LTR">
         <span id="dirLabelMob">LTR</span>
       </button>
-      <a href="login.html" class="btn btn-primary btn-sm" style="flex:1;">Book Now</a>
+      <a href="login.html" class="btn btn-outline btn-sm" style="flex:1; margin-right: 0.5rem;">Login / Sign Up</a>
+      <a href="contact.html" class="btn btn-primary btn-sm" style="flex:1;">Book Now</a>
     </li>
   </ul>
 
@@ -67,7 +68,8 @@
     <button class="ctrl-btn" id="dirToggle" title="Toggle RTL/LTR">
       <span id="dirLabel">LTR</span>
     </button>
-    <a href="login.html" class="btn btn-primary btn-sm">Book Now</a>
+    <a href="login.html" class="btn btn-outline btn-sm" style="margin-right: 0.5rem;">Login / Sign Up</a>
+    <a href="contact.html" class="btn btn-primary btn-sm">Book Now</a>
   </div>
 
   <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
