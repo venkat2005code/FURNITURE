@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artisan Restore — Craftsman Studio | Home 2</title>
+<meta name="description" content="Step inside the Artisan Restore craftsman studio. Discover our workshop ethos, heritage tools, and bespoke restoration process.">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<style>
+/* §1 HERO – full-width cinematic */
+.hero2{position:relative;min-height:calc(100vh - var(--nav-h));display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero2-bg{position:absolute;inset:0;background:url('images/hero-before-after.png') center/cover no-repeat;}
+.hero2-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(22,16,10,.9) 0%,rgba(60,40,15,.7) 60%,rgba(200,134,10,.2) 100%);}
+.hero2-content{position:relative;z-index:1;text-align:center;color:var(--white);max-width:780px;padding:2rem;}
+.hero2-content .eyebrow{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-lt);margin-bottom:1rem;}
+.hero2-content h1{color:var(--white);margin-bottom:1.25rem;}
+.hero2-content p{color:rgba(240,233,216,.8);font-size:1.1rem;margin-bottom:2.5rem;}
+.hero2-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(240,233,216,.5);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;animation:bounce 2s infinite;}
+.hero2-scroll svg{color:var(--primary);}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+/* §2 FEATURES ICONS */
+.features-section{background:var(--bg);}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
+.feat-card{padding:2rem 1.5rem;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--surface);text-align:center;transition:var(--transition);}
+.feat-card:hover{border-color:var(--primary);transform:translateY(-6px);box-shadow:var(--shadow-md);}
+.feat-icon{width:64px;height:64px;border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(200,134,10,.12),rgba(200,134,10,.05));border:1.5px solid rgba(200,134,10,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;color:var(--primary);}
+.feat-card h4{margin-bottom:.5rem;}
+.feat-card p{font-size:.875rem;}
+
+/* §3 WORKSHOP TOUR – horizontal scroll cards */
+.workshop-section{background:var(--bg2);}
+.workshop-scroll{display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;margin-top:3rem;}
+.workshop-scroll::-webkit-scrollbar{height:4px;}
+.workshop-scroll::-webkit-scrollbar-thumb{background:var(--primary);border-radius:2px;}
+.ws-card{flex:0 0 320px;scroll-snap-align:start;border-radius:var(--radius-lg);overflow:hidden;position:relative;}
+.ws-card img{width:100%;height:280px;object-fit:cover;transition:transform .5s;}
+.ws-card:hover img{transform:scale(1.05);}
+.ws-card-label{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;background:linear-gradient(to top,rgba(22,16,10,.9),transparent);color:var(--white);}
+.ws-card-label h4{margin-bottom:.25rem;color:var(--white);}
+.ws-card-label p{font-size:.8rem;color:rgba(240,233,216,.75);}
+
+/* §3 WORKSHOP TOUR – horizontal scroll cards */
+.workshop-section{background:var(--bg2);}
+.workshop-scroll{display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;margin-top:3rem;}
+.workshop-scroll::-webkit-scrollbar{height:4px;}
+.workshop-scroll::-webkit-scrollbar-thumb{background:var(--primary);border-radius:2px;}
+.ws-card{flex:0 0 320px;scroll-snap-align:start;border-radius:var(--radius-lg);overflow:hidden;position:relative;}
+.ws-card img{width:100%;height:280px;object-fit:cover;transition:transform .5s;}
+.ws-card:hover img{transform:scale(1.05);}
+.ws-card-label{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;background:linear-gradient(to top,rgba(22,16,10,.9),transparent);color:var(--white);}
+.ws-card-label h4{margin-bottom:.25rem;color:var(--white);}
+.ws-card-label p{font-size:.8rem;color:rgba(240,233,216,.75);}
+
+/* §4 TEAM */
+.team-section{background:var(--bg);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.team-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;text-align:center;transition:var(--transition);}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary);}
+.team-img{width:100%;height:240px;object-fit:cover;object-position:top;}
+.team-body{padding:1.5rem;}
+.team-body h4{margin-bottom:.2rem;}
+.team-role{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:.5rem;}
+.team-body p{font-size:.85rem;}
+
+/* § TURNAROUND TIMES */
+.turnaround-section { background: var(--walnut); padding: 5rem 0; color: rgba(240,233,216,.9); }
+.turnaround-section .section-title { color: var(--white); }
+.turnaround-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+.turnaround-card { background: rgba(22,16,10,0.5); border: 1px solid rgba(200,134,10,0.2); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; }
+.turnaround-card h4 { color: var(--primary-lt); margin-bottom: 1rem; font-size: 1.25rem; }
+.turnaround-card .time { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1rem; }
+.turnaround-card p { font-size: 0.95rem; color: rgba(240,233,216,.7); }
+
+
+
+@media(max-width:1024px){.feat-grid{grid-template-columns:repeat(2,1fr);}.team-grid{grid-template-columns:repeat(2,1fr);}.turnaround-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.feat-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr;}.turnaround-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.booking-flow{padding:1.5rem;}.category-grid{grid-template-columns:repeat(2, 1fr);}}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+<main class="page-content">
+
+  <!-- §1 HERO -->
+  <section class="hero2">
+    <div class="hero2-bg"></div>
+    <div class="hero2-overlay"></div>
+    <div class="hero2-content">
+      <p class="eyebrow">Expert Repair &amp; Restoration</p>
+      <h1>Breathe New Life Into Your Furniture</h1>
+      <p>Step inside our Shoreditch studio and discover how traditional hand techniques and genuine care transform damaged or aged furniture into enduring works of art.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#booking" class="btn btn-primary btn-lg">Book a Restoration</a>
+        <a href="services.html" class="btn btn-ghost btn-lg">View Services</a>
+      </div>
+    </div>
+    <div class="hero2-scroll">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      Scroll
+    </div>
+  </section>
+
+  <!-- §2 FEATURES -->
+  <section class="features-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Why Artisan Restore</span>
+        <h2 class="section-title">The Craftsman Difference</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <h4>Hand-Tool Craftsmanship</h4>
+          <p>Every repair uses period-appropriate tools — no shortcuts, no power-tool damage to delicate surfaces.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>Period-Correct Materials</h4>
+          <p>We source historically authentic veneers, fabrics, finishes and hardware to preserve original character.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4>Guaranteed Turnaround</h4>
+          <p>We commit to a delivery window and honour it — with real-time updates throughout your project.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <h4>Free Collection &amp; Return</h4>
+          <p>We collect from anywhere in Greater London — fully insured, white-glove handling from door to door.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 WORKSHOP TOUR -->
+  <section class="workshop-section" style="padding:5rem 0;">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Inside Our Studio</span>
+        <h2 class="section-title">The Workshop at Work</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Swipe through our craftsman studio — where every piece tells a story of careful hands and honest materials.</p>
+      </div>
+      <div class="workshop-scroll">
+        <div class="ws-card">
+          <img src="images/craftsman-workshop.png" alt="Craftsman at work in the workshop">
+          <div class="ws-card-label"><h4>The Craftsman's Bench</h4><p>Where every restoration begins — hand tools, patience, and passion.</p></div>
+        </div>
+        <div class="ws-card">
+          <img src="images/wooden-restoration.png" alt="Wood restoration close-up">
+          <div class="ws-card-label"><h4>Wood Restoration</h4><p>Grain repair, colour matching, and French-polish finishing.</p></div>
+        </div>
+        <div class="ws-card">
+          <img src="images/antique-restoration.png" alt="Antique furniture restoration">
+          <div class="ws-card-label"><h4>Antique Conservation</h4><p>Period-correct materials for heirloom-quality results.</p></div>
+        </div>
+        <div class="ws-card">
+          <img src="images/upholstery-restoration.png" alt="Upholstery work">
+          <div class="ws-card-label"><h4>Upholstery Studio</h4><p>Full re-upholstery from structural frame to fabric finish.</p></div>
+        </div>
+        <div class="ws-card">
+          <img src="images/s-03.png" alt="Furniture detail work">
+          <div class="ws-card-label"><h4>Detail Work</h4><p>Hand-carved repairs and decorative restoration by eye.</p></div>
+        </div>
+        <div class="ws-card">
+          <img src="images/s-05.png" alt="Finished restoration piece">
+          <div class="ws-card-label"><h4>The Finished Piece</h4><p>Every item leaves the studio looking better than the day it was made.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § TURNAROUND TIMES -->
+  <section class="turnaround-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Our Process</span>
+        <h2 class="section-title">Estimated Turnaround Times</h2>
+        <div class="divider"></div>
+        <p class="section-sub">We take the time needed to ensure perfection. Here is what to expect for our most common restoration services.</p>
+      </div>
+      <div class="turnaround-grid">
+        <div class="turnaround-card">
+          <h4>Basic Repair &amp; Polish</h4>
+          <div class="time">1 - 2 Weeks</div>
+          <p>Ideal for minor scratches, loose joints, or refreshing the finish on small items like chairs and side tables.</p>
+        </div>
+        <div class="turnaround-card">
+          <h4>Full Upholstery</h4>
+          <div class="time">3 - 5 Weeks</div>
+          <p>Includes complete stripping, structural repair, re-springing, and recovering for sofas and armchairs.</p>
+        </div>
+        <div class="turnaround-card">
+          <h4>Antique Conservation</h4>
+          <div class="time">6 - 8 Weeks</div>
+          <p>Meticulous restoration of heritage pieces using period-correct materials, veneers, and French polishing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- §4 TEAM -->
+  <section class="team-section" style="padding:5rem 0;">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Meet the Craftsmen</span>
+        <h2 class="section-title">The Hands Behind the Work</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Our small, dedicated team of master craftsmen bring decades of combined experience to every restoration project.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <img class="team-img" src="images/craftsman-workshop.png" alt="Head restorer at the workshop bench">
+          <div class="team-body">
+            <h4>Thomas Wren</h4>
+            <p class="team-role">Head Restorer</p>
+            <p>20 years restoring period furniture across London's most prestigious private collections and auction houses.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <img class="team-img" src="images/upholstery-restoration.png" alt="Senior upholsterer working on fabric">
+          <div class="team-body">
+            <h4>Eleanor Marsh</h4>
+            <p class="team-role">Senior Upholsterer</p>
+            <p>Specialist in traditional upholstery techniques including hand-stitching, springing, and heritage fabric sourcing.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <img class="team-img" src="images/antique-restoration.png" alt="Antique conservation specialist at work">
+          <div class="team-body">
+            <h4>James Calloway</h4>
+            <p class="team-role">Antique Specialist</p>
+            <p>Trained conservator with expertise in French polishing, gilding, and authenticated period restoration methods.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § INSTAGRAM MOSAIC -->
+  <section style="background:var(--bg2);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">@artisanrestore</span>
+        <h2 class="section-title">Follow Our Work on Instagram</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Daily behind-the-scenes, before &amp; after reveals, and craft process videos.</p>
+      </div>
+      <div class="insta-mosaic">
+        <div class="insta-item insta-tall"><img src="images/tall_table.png" alt="Antique wooden table texture"><div class="insta-ov"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 247</div></div>
+        <div class="insta-item"><img src="images/image copy 5.png" alt="Victorian chair before and after restoration"><div class="insta-ov"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 189</div></div>
+        <div class="insta-item"><img src="images/image copy 6.png" alt="Rocking chair in craftsman workshop"><div class="insta-ov"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 312</div></div>
+        <div class="insta-item"><img src="images/image copy 7.png" alt="Armchair in woodworking studio"><div class="insta-ov"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 156</div></div>
+        <div class="insta-item insta-wide"><img src="images/image copy 8.png" alt="Restored antique writing desk in period room"><div class="insta-ov"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 421</div></div>
+        <div class="insta-item"><img src="images/image copy 3.png" alt="Restoration supplies and finishes"><div class="insta-ov"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 198</div></div>
+      </div>
+      <div style="text-align:center;margin-top:2rem;"><a href="#" class="btn btn-outline">Follow @artisanrestore</a></div>
+    </div>
+  </section>
+  <style>
+  .insta-mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:.75rem;margin-top:2.5rem;}
+  .insta-item{border-radius:var(--radius-md);overflow:hidden;position:relative;cursor:pointer;}
+  .insta-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .insta-item:hover img{transform:scale(1.08);}
+  .insta-tall{grid-row:span 2;}
+  .insta-wide{grid-column:span 2;}
+  .insta-ov{position:absolute;inset:0;background:rgba(22,16,10,.6);display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--white);font-weight:600;font-size:.9rem;opacity:0;transition:opacity .3s;}
+  .insta-item:hover .insta-ov{opacity:1;}
+  @media(max-width:768px){.insta-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}.insta-tall{grid-row:span 1;}.insta-wide{grid-column:span 1;}}
+  </style>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="nav.js"></script>
+
+</body>
+</html>

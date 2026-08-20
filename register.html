@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — Artisan Restore Client Portal</title>
+<meta name="description" content="Create your Artisan Restore client account to track your furniture restoration project.">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{min-height:100vh;display:flex;align-items:stretch;background:var(--bg);}
+.auth-split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;width:100%;}
+.auth-visual{position:relative;overflow:hidden;background:var(--walnut);}
+.auth-visual-img{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.3;}
+.auth-visual-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(22,16,10,.92),rgba(60,40,15,.75));}
+.auth-visual-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;padding:4rem;}
+.auth-brand{display:flex;align-items:center;gap:.75rem;margin-bottom:3rem;}
+.auth-brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;}
+.auth-brand-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--primary-lt);}
+.auth-visual-content h2{color:rgba(240,233,216,.95);font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:1rem;}
+.auth-visual-content p{color:rgba(240,233,216,.65);font-size:.9rem;line-height:1.7;margin-bottom:2rem;}
+.auth-feat{display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem;}
+.auth-feat svg{color:var(--primary-lt);flex-shrink:0;}
+.auth-feat span{font-size:.875rem;color:rgba(240,233,216,.7);}
+.auth-form-wrap{display:flex;align-items:center;justify-content:center;padding:3rem 2rem;overflow-y:auto;}
+.auth-card{width:100%;max-width:440px;}
+.auth-card h1{font-size:1.75rem;margin-bottom:.35rem;}
+.auth-card>p{font-size:.9rem;color:var(--text-muted);margin-bottom:2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.auth-divider{display:flex;align-items:center;gap:1rem;margin:1.25rem 0;color:var(--text-muted);font-size:.8rem;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.social-login{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.soc-login-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.65rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius-md);background:var(--surface);font-size:.8rem;font-weight:600;color:var(--text);cursor:pointer;transition:var(--transition);}
+.soc-login-btn:hover{border-color:var(--primary);background:var(--bg2);}
+.terms-check{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:1.25rem;}
+.terms-check input{width:16px;height:16px;flex-shrink:0;margin-top:.15rem;accent-color:var(--primary);}
+.terms-check label{font-size:.8rem;color:var(--text-muted);line-height:1.5;}
+.terms-check a{color:var(--primary);}
+@media(max-width:768px){.auth-split{grid-template-columns:1fr;}.auth-visual{display:none;}.auth-form-wrap{min-height:100vh;}.form-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="auth-split">
+  <div class="auth-visual">
+    <img class="auth-visual-img" src="https://loremflickr.com/1600/900/furniture,antique?lock=5024" alt="">
+    <div class="auth-visual-overlay"></div>
+    <div class="auth-visual-content">
+      <a href="index.html" class="auth-brand" style="text-decoration:none;">
+        <img src="images/logo.png" alt="Logo">
+        <div><div class="auth-brand-name">Artisan Restore</div></div>
+      </a>
+      <h2>Join Our Client Community</h2>
+      <p>Create your account to book restorations, track progress, and access your project history — all in one place.</p>
+      <div>
+        <div class="auth-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Book restorations in minutes</span></div>
+        <div class="auth-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Track your project live</span></div>
+        <div class="auth-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Receive progress photo updates</span></div>
+        <div class="auth-feat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Manage invoices &amp; payments</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="auth-form-wrap">
+    <div class="auth-card">
+      <h1>Create Account</h1>
+      <p>Start your restoration journey today</p>
+      <div class="social-login" style="grid-template-columns:repeat(3, 1fr);">
+        <button class="soc-login-btn"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</button>
+        <button class="soc-login-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>Facebook</button>
+        <button class="soc-login-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.19 2.31-.88 3.5-.84 1.5.06 2.76.71 3.53 1.83-3.1 1.85-2.6 5.86.37 7.02-.75 1.89-1.9 3.91-2.48 4.16zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>Apple</button>
+      </div>
+      <div class="auth-divider">or register with email</div>
+      <form onsubmit="return false;">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name *</label><input class="form-control" type="text" placeholder="Thomas"></div>
+          <div class="form-group"><label class="form-label">Last Name *</label><input class="form-control" type="text" placeholder="Wren"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email Address *</label><input class="form-control" type="email" placeholder="thomas@example.com"></div>
+        <div class="form-group"><label class="form-label">Phone Number</label><input class="form-control" type="tel" placeholder="+44 20 0000 0000"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Password *</label><input class="form-control" type="password" placeholder="Min. 8 characters"></div>
+          <div class="form-group"><label class="form-label">Confirm Password *</label><input class="form-control" type="password" placeholder="Repeat password"></div>
+        </div>
+        <div class="terms-check">
+          <input type="checkbox" id="terms">
+          <label for="terms">I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="window.location.href='login.html'">Create My Account</button>
+      </form>
+      <div class="auth-divider">already have an account?</div>
+      <a href="login.html" class="btn btn-outline" style="width:100%;justify-content:center;">Sign In</a>
+
+    </div>
+  </div>
+</div>
+<script>
+const t=localStorage.getItem('ar-theme')||'light';
+const d=localStorage.getItem('ar-dir')||'ltr';
+document.documentElement.setAttribute('data-theme',t);
+document.documentElement.setAttribute('dir',d);
+</script>
+</body>
+</html>

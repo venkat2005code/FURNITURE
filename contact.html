@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Artisan Restore — Book a Furniture Restoration</title>
+<meta name="description" content="Contact Artisan Restore to book a furniture repair or restoration. Free collection, free quote, London's finest craftsmen.">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero{padding:6rem 0 4rem;background:var(--walnut);position:relative;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity: 1;}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(22,16,10,.3),rgba(22,16,10,.7));}
+.page-hero-content{position:relative;z-index:1;text-align:center;color:var(--white);}
+.page-hero-content h1{color:var(--white);}
+.breadcrumb{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.8rem;color:rgba(240,233,216,.5);margin-bottom:1rem;}
+.breadcrumb a{color:var(--primary-lt);}
+
+/* contact grid */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3.5rem;align-items:start;}
+.contact-info h2{margin-bottom:.75rem;}
+.contact-info p{margin-bottom:2rem;}
+.info-card{display:flex;gap:1rem;align-items:flex-start;padding:1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:1rem;transition:var(--transition);}
+.info-card:hover{border-color:var(--primary);transform:translateX(4px);}
+.info-icon{width:44px;height:44px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--primary),var(--primary-lt));display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--white);}
+.info-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:.2rem;}
+.info-value{font-weight:600;font-size:.95rem;color:var(--text);}
+.info-sub{font-size:.8rem;color:var(--text-muted);}
+
+/* contact form card */
+.contact-form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;box-shadow:var(--shadow-md);}
+.contact-form-card h3{margin-bottom:.5rem;}
+.contact-form-card>p{margin-bottom:1.75rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-file{border:2px dashed var(--border);border-radius:var(--radius-md);padding:2rem;text-align:center;cursor:pointer;transition:var(--transition);}
+.form-file:hover{border-color:var(--primary);background:rgba(200,134,10,.03);}
+.form-file svg{color:var(--primary);margin-bottom:.5rem;}
+.form-file p{font-size:.85rem;margin:0;}
+.form-file small{font-size:.75rem;color:var(--text-muted);}
+
+/* map placeholder */
+.map-section{background:var(--bg2);}
+.map-box{border-radius:var(--radius-lg);overflow:hidden;height:400px;position:relative;background:var(--surface);border:1px solid var(--border);}
+.map-placeholder{width:100%;height:100%;object-fit:cover;opacity:.6;}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--primary);color:var(--white);padding:.75rem 1.25rem;border-radius:var(--radius-md);font-size:.9rem;font-weight:600;box-shadow:var(--shadow-md);white-space:nowrap;}
+.map-pin::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--primary);}
+
+/* social connect */
+.social-section{background:var(--walnut);padding:4rem 0;}
+.social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;}
+.soc-card{background:rgba(255,255,255,.06);border:1px solid rgba(200,134,10,.2);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:var(--transition);}
+.soc-card:hover{background:rgba(200,134,10,.12);border-color:var(--primary);transform:translateY(-4px);}
+.soc-card svg{margin-bottom:.75rem;transition:color 0.25s;}
+.soc-card.instagram svg{color:#E1306C;}
+.soc-card.facebook svg{color:#1877F2;}
+.soc-card.pinterest svg{color:#E60023;}
+.soc-card.youtube svg{color:#FF0000;}
+.soc-card h5{color:rgba(240,233,216,.9);margin-bottom:.3rem;}
+.soc-card p{font-size:.8rem;color:rgba(240,233,216,.55);}
+
+@media(max-width:1024px){.contact-grid{grid-template-columns:1fr;}.social-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.form-row{grid-template-columns:1fr;}.social-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+<main class="page-content">
+
+  <!-- §1 PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://loremflickr.com/1600/900/furniture,antique?lock=5014');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></nav>
+      <h1>Get in Touch</h1>
+      <p style="color:rgba(240,233,216,.75);max-width:480px;margin:.5rem auto 0;">Free quote, free collection, 48-hour response. Let's start your restoration.</p>
+    </div>
+  </section>
+
+  <!-- §2 CONTACT FORM + INFO -->
+  <section style="background:var(--bg);">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-label">Contact Us</span>
+          <h2 class="section-title">We'd Love to Hear From You</h2>
+          <div class="divider"></div>
+          <p>Whether you have a question about a specific piece or you're ready to book a restoration, our team responds to every enquiry within two hours during business hours.</p>
+
+          <div class="info-card">
+            <div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="info-label">Workshop Address</div><div class="info-value">14 Craftsman Lane, Heritage Quarter</div><div class="info-sub">London EC1A 4AB, United Kingdom</div></div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.64 16.92z"/></svg></div>
+            <div><div class="info-label">Phone</div><div class="info-value">+44 20 7946 0321</div><div class="info-sub">Mon–Fri 8am–6pm, Sat 9am–4pm</div></div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="info-label">Email</div><div class="info-value">hello@artisanrestore.co.uk</div><div class="info-sub">Response within 2 business hours</div></div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><div class="info-label">Opening Hours</div><div class="info-value">Mon–Fri: 8:00am – 6:00pm</div><div class="info-sub">Saturday: 9:00am – 4:00pm</div></div>
+          </div>
+        </div>
+
+        <div class="contact-form-card">
+          <h3>Send Us a Message</h3>
+          <p>Tell us about your piece and we'll get back with a free, transparent quote.</p>
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">First Name *</label><input class="form-control" type="text" placeholder="Thomas" required></div>
+              <div class="form-group"><label class="form-label">Last Name *</label><input class="form-control" type="text" placeholder="Wren" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Email *</label><input class="form-control" type="email" placeholder="thomas@example.com" required></div>
+              <div class="form-group"><label class="form-label">Phone</label><input class="form-control" type="tel" placeholder="+44 20 0000 0000"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Type of Service</label>
+              <select class="form-control">
+                <option>Wood Restoration</option>
+                <option>Upholstery &amp; Fabric</option>
+                <option>Antique Conservation</option>
+                <option>Structural Repair</option>
+                <option>General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Collection Date</label>
+              <input class="form-control" type="date">
+            </div>
+            <div class="form-group"><label class="form-label">Describe Your Piece &amp; Requirements *</label><textarea class="form-control" rows="4" placeholder="Tell us about the furniture — its age, condition, what restoration you need, and any sentimental significance..." required></textarea></div>
+            <div class="form-group">
+              <label class="form-label">Upload Photos (optional)</label>
+              <div class="form-file" onclick="document.getElementById('photoUpload').click()">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <p>Click to upload photos of your piece</p>
+                <small>JPG, PNG up to 10MB each</small>
+                <input type="file" id="photoUpload" multiple accept="image/*" style="display:none;">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Send Enquiry &amp; Request Free Quote</button>
+            <p style="text-align:center;font-size:.75rem;margin-top:.75rem;">We respond within 2 business hours. Free collection included for London addresses.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 MAP -->
+  <section class="map-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:2rem;">
+        <span class="section-label">Find Us</span>
+        <h2 class="section-title">Visit Our Shoreditch Workshop</h2>
+        <div class="divider"></div>
+        <p class="section-sub">We welcome workshop visits by appointment. See our space and meet the craftsmen.</p>
+      </div>
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39722.906935759715!2d-0.0988629235084931!3d51.522510910168474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b570220d6ab%3A0x6b24d9c7d425c28!2sShoreditch%2C%20London%2C%20UK!5e0!3m2!1sen!2sus!4v1714571830219!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- §4 SOCIAL CONNECT -->
+  <section class="social-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label" style="color:var(--primary-lt);">Follow Our Work</span>
+        <h2 class="section-title" style="color:rgba(240,233,216,.95);">Connect With Us</h2>
+        <div class="divider" style="margin:1rem auto 0;"></div>
+      </div>
+      <div class="social-grid">
+        <a href="#" class="soc-card instagram"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><h5>Instagram</h5><p>@artisanrestore — Daily before &amp; afters</p></a>
+        <a href="#" class="soc-card facebook"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><h5>Facebook</h5><p>Client stories and workshop news</p></a>
+        <a href="#" class="soc-card pinterest"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg><h5>Pinterest</h5><p>Restoration inspiration boards</p></a>
+        <a href="#" class="soc-card youtube"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM10 15.5v-7l6 3.5-6 3.5z"/></svg><h5>YouTube</h5><p>Process videos and tutorials</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 FAQ SECTION -->
+  <section style="background:var(--bg);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-label">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Quick answers to the questions we hear most from new clients.</p>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-item open">
+          <div class="faq-q">How long does a typical restoration take?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="faq-a"><div class="faq-inner">Most projects take between 7 and 21 business days, depending on complexity. Minor touch-ups can be turned around in 1–3 days. We'll confirm a guaranteed delivery date in your quote.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you collect from outside London?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="faq-a"><div class="faq-inner">Greater London collection is free. For areas outside London, we can arrange insured courier collection at a flat rate of £45–£85 depending on distance. You're also welcome to bring the piece to our Shoreditch workshop.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is my furniture insured while in your workshop?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="faq-a"><div class="faq-inner">Yes. All pieces in our care are covered by our comprehensive workshop insurance up to £50,000 per item. For higher-value antiques, we can arrange additional cover by prior agreement.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I supply my own fabric or materials?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="faq-a"><div class="faq-inner">Absolutely! We welcome client-supplied fabrics and materials. We'll provide a cutting guide before you purchase to ensure you order the correct quantity and grain direction.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What payment methods do you accept?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="faq-a"><div class="faq-inner">We accept bank transfer, all major credit/debit cards, and PayPal. For projects over £500, we offer a 50/50 split payment — half on approval, half on completion.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What if I'm not happy with the result?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="faq-a"><div class="faq-inner">We stand behind our work. If you're not completely satisfied, we'll re-do the work at no charge — no questions asked. All completed restorations carry a 12-month workmanship guarantee.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+  .faq-wrap{max-width:760px;margin:2.5rem auto 0;}
+  .faq-item{border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:.75rem;overflow:hidden;background:var(--surface);}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;cursor:pointer;font-weight:600;font-size:.95rem;transition:background .25s;}
+  .faq-q:hover{background:var(--bg2);}
+  .faq-q svg{transition:transform .3s;color:var(--primary);flex-shrink:0;}
+  .faq-item.open .faq-q svg{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+  .faq-item.open .faq-a{max-height:300px;}
+  .faq-inner{padding:0 1.5rem 1.25rem;font-size:.875rem;color:var(--text-muted);line-height:1.7;}
+  </style>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="nav.js"></script>
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.closest('.faq-item');
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Artisan Restore</title>
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<style>
+body{overflow:hidden;}
+.dash-layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh;}
+/* sidebar */
+.dash-sidebar{background:var(--walnut);padding:0;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;width:240px;z-index:500;overflow-y:auto;}
+[data-theme="dark"] .dash-sidebar{background:#0F0A06;}
+.dash-logo{display:flex;align-items:center;gap:.75rem;padding:1.5rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.08);}
+.dash-logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;}
+.dash-logo-name{font-family:'Playfair Display',serif;color:var(--primary-lt);font-size:1rem;font-weight:700;}
+.dash-logo-sub{font-size:.6rem;color:rgba(240,233,216,.4);text-transform:uppercase;letter-spacing:.08em;}
+.dash-nav{padding:1.25rem 0;flex:1;}
+.dash-nav-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(240,233,216,.3);padding:.5rem 1.25rem .3rem;}
+.dash-nav-item{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.25rem;color:rgba(240,233,216,.6);font-size:.85rem;cursor:pointer;transition:all .25s;border-left:3px solid transparent;}
+.dash-nav-item:hover,.dash-nav-item.active{color:var(--primary-lt);background:rgba(200,134,10,.1);border-left-color:var(--primary);}
+.dash-nav-item svg{width:18px;height:18px;flex-shrink:0;}
+.dash-footer{padding:1.25rem;border-top:1px solid rgba(255,255,255,.08);}
+.dash-user{display:flex;align-items:center;gap:.6rem;}
+.dash-avatar{width:36px;height:36px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;color:var(--white);font-weight:700;}
+.dash-user-name{font-size:.85rem;color:rgba(240,233,216,.8);font-weight:600;}
+.dash-user-role{font-size:.7rem;color:rgba(240,233,216,.4);}
+/* main */
+.dash-main{margin-left:240px;display:flex;flex-direction:column;min-height:100vh;background:var(--bg);}
+.dash-header{height:64px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;position:sticky;top:0;z-index:100;}
+.dash-header h2{font-size:1.1rem;}
+.dash-header-right{display:flex;align-items:center;gap:1rem;}
+.badge-btn{position:relative;cursor:pointer;color:var(--text-muted);}
+.badge-dot{position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:var(--primary);border:2px solid var(--surface);}
+.dash-content{padding:2rem;overflow-y:auto;flex:1;}
+/* stats row */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:2rem;}
+.stat-tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;display:flex;align-items:center;gap:1rem;transition:var(--transition);}
+.stat-tile:hover{box-shadow:var(--shadow-md);border-color:var(--primary);}
+.stat-icon{width:52px;height:52px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.stat-icon.amber{background:rgba(200,134,10,.12);color:var(--primary);}
+.stat-icon.green{background:rgba(34,197,94,.12);color:#16a34a;}
+.stat-icon.blue{background:rgba(59,130,246,.12);color:#2563eb;}
+.stat-icon.purple{background:rgba(139,92,246,.12);color:#7c3aed;}
+.stat-val{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1;}
+.stat-lbl{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem;}
+.stat-change{font-size:.75rem;margin-top:.2rem;}
+.stat-change.up{color:#16a34a;}.stat-change.dn{color:#dc2626;}
+/* grid 2col */
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+.dash-grid.wide{grid-template-columns:1.6fr 1fr;}
+/* card */
+.d-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.d-card-head{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);}
+.d-card-head h4{font-size:.95rem;}
+.d-card-body{padding:1.5rem;}
+/* orders table */
+.orders-table{width:100%;border-collapse:collapse;}
+.orders-table th{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);padding:.6rem 1rem;text-align:left;border-bottom:2px solid var(--border);}
+.orders-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);font-size:.85rem;color:var(--text-muted);}
+.orders-table tr:last-child td{border:none;}
+.orders-table tr:hover td{background:var(--bg2);}
+.status-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;text-transform:uppercase;}
+.status-badge.in-progress{background:rgba(200,134,10,.1);color:var(--primary);}
+.status-badge.completed{background:rgba(34,197,94,.1);color:#16a34a;}
+.status-badge.pending{background:rgba(59,130,246,.1);color:#2563eb;}
+.status-badge.review{background:rgba(139,92,246,.1);color:#7c3aed;}
+/* mini bar chart */
+.bar-chart{display:flex;align-items:flex-end;gap:.5rem;height:120px;padding-top:.5rem;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;}
+.bar{width:100%;border-radius:4px 4px 0 0;background:linear-gradient(to top,var(--primary-dk),var(--primary-lt));min-height:4px;transition:height .5s;}
+.bar-lbl{font-size:.65rem;color:var(--text-muted);}
+/* messages list */
+.msg-item{display:flex;gap:.75rem;padding:.85rem 0;border-bottom:1px solid var(--border);}
+.msg-item:last-child{border:none;}
+.msg-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-lt));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:.85rem;flex-shrink:0;}
+.msg-name{font-size:.85rem;font-weight:600;color:var(--text);}
+.msg-text{font-size:.8rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;}
+.msg-time{font-size:.7rem;color:var(--text-muted);margin-left:auto;flex-shrink:0;}
+.unread .msg-name::after{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--primary);margin-left:.4rem;vertical-align:middle;}
+/* quick actions */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.qa-btn{display:flex;align-items:center;gap:.75rem;padding:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:var(--transition);color:var(--text);font-size:.85rem;font-weight:600;}
+.qa-btn:hover{border-color:var(--primary);background:rgba(200,134,10,.05);color:var(--primary);}
+.qa-btn svg{color:var(--primary);}
+@media(max-width:1024px){.stat-row{grid-template-columns:repeat(2,1fr);}.dash-grid,.dash-grid.wide{grid-template-columns:1fr;}}
+@media(max-width:768px){.dash-sidebar{transform:translateX(-100%);transition:transform .3s;}.dash-sidebar.open{transform:translateX(0);}.dash-main{margin-left:0;}.stat-row{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="dash-layout">
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-logo">
+      <img src="images/logo.png" alt="Logo">
+      <div><div class="dash-logo-name">Artisan Restore</div><div class="dash-logo-sub">Admin Dashboard</div></div>
+    </div>
+    <nav class="dash-nav">
+      <div class="dash-nav-label">Main</div>
+      <div class="dash-nav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Overview</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Projects</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Clients</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Messages</div>
+      <div class="dash-nav-label" style="margin-top:1rem;">Finance</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Invoices</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Analytics</div>
+      <div class="dash-nav-label" style="margin-top:1rem;">Content</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Blog Posts</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Gallery</div>
+      <div class="dash-nav-label" style="margin-top:1rem;">System</div>
+      <div class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 1 21 12"/></svg>Settings</div>
+      <a href="index.html" class="dash-nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Back to Site</a>
+    </nav>
+    <div class="dash-footer">
+      <div class="dash-user">
+        <div class="dash-avatar">T</div>
+        <div><div class="dash-user-name">Thomas Wren</div><div class="dash-user-role">Admin</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dash-main">
+    <header class="dash-header">
+      <h2>Dashboard Overview</h2>
+      <div class="dash-header-right">
+        <div class="badge-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="badge-dot"></div></div>
+        <button class="ctrl-btn" id="themeToggle" title="Toggle theme"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+        <a href="index.html" class="btn btn-primary btn-sm">View Site</a>
+      </div>
+    </header>
+
+    <div class="dash-content">
+      <!-- STATS -->
+      <div class="stat-row">
+        <div class="stat-tile"><div class="stat-icon amber"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div><div class="stat-val">24</div><div class="stat-lbl">Active Projects</div><div class="stat-change up">+3 this week</div></div></div>
+        <div class="stat-tile"><div class="stat-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="stat-val">£38.4k</div><div class="stat-lbl">Revenue (Month)</div><div class="stat-change up">+12% vs last month</div></div></div>
+        <div class="stat-tile"><div class="stat-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><div class="stat-val">183</div><div class="stat-lbl">Total Clients</div><div class="stat-change up">+8 this month</div></div></div>
+        <div class="stat-tile"><div class="stat-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="stat-val">4.9</div><div class="stat-lbl">Avg. Rating</div><div class="stat-change up">97 reviews</div></div></div>
+      </div>
+
+      <!-- CHART + MESSAGES -->
+      <div class="dash-grid wide">
+        <div class="d-card">
+          <div class="d-card-head"><h4>Monthly Revenue</h4><span style="font-size:.75rem;color:var(--text-muted);">Last 6 months</span></div>
+          <div class="d-card-body">
+            <div class="bar-chart" id="barChart">
+              <div class="bar-col"><div class="bar" style="height:55%;"></div><span class="bar-lbl">Feb</span></div>
+              <div class="bar-col"><div class="bar" style="height:68%;"></div><span class="bar-lbl">Mar</span></div>
+              <div class="bar-col"><div class="bar" style="height:72%;"></div><span class="bar-lbl">Apr</span></div>
+              <div class="bar-col"><div class="bar" style="height:58%;"></div><span class="bar-lbl">May</span></div>
+              <div class="bar-col"><div class="bar" style="height:85%;"></div><span class="bar-lbl">Jun</span></div>
+              <div class="bar-col"><div class="bar" style="height:100%;background:linear-gradient(to top,var(--primary-dk),var(--primary-lt));"></div><span class="bar-lbl">Jul</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="d-card">
+          <div class="d-card-head"><h4>Recent Messages</h4><a href="#" style="font-size:.75rem;color:var(--primary);">View all</a></div>
+          <div class="d-card-body" style="padding:1rem 1.5rem;">
+            <div class="msg-item unread"><div class="msg-av">S</div><div style="flex:1;min-width:0;"><div class="msg-name">Sarah P.</div><div class="msg-text">When will my armchair be ready for collection?</div></div><div class="msg-time">2h ago</div></div>
+            <div class="msg-item unread"><div class="msg-av">J</div><div style="flex:1;min-width:0;"><div class="msg-name">James W.</div><div class="msg-text">Delighted with the mahogany desk result!</div></div><div class="msg-time">5h ago</div></div>
+            <div class="msg-item"><div class="msg-av">E</div><div style="flex:1;min-width:0;"><div class="msg-name">Eleanor F.</div><div class="msg-text">Can I change the fabric to the darker green?</div></div><div class="msg-time">1d ago</div></div>
+            <div class="msg-item"><div class="msg-av">R</div><div style="flex:1;min-width:0;"><div class="msg-name">Robert A.</div><div class="msg-text">Sent over the photos of the bookcase damage</div></div><div class="msg-time">2d ago</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS TABLE + QUICK ACTIONS -->
+      <div class="dash-grid wide">
+        <div class="d-card">
+          <div class="d-card-head"><h4>Active Projects</h4><a href="#" class="btn btn-primary btn-sm">New Project</a></div>
+          <div style="overflow-x:auto;">
+            <table class="orders-table">
+              <thead><tr><th>Client</th><th>Item</th><th>Service</th><th>Due</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Sarah Pemberton</td><td>Victorian Armchair</td><td>Upholstery</td><td>30 Jul</td><td><span class="status-badge in-progress">In Progress</span></td></tr>
+                <tr><td>James Whitfield</td><td>Mahogany Desk</td><td>Wood Restoration</td><td>28 Jul</td><td><span class="status-badge completed">Completed</span></td></tr>
+                <tr><td>Eleanor Fox</td><td>Chesterfield Sofa</td><td>Re-upholstery</td><td>4 Aug</td><td><span class="status-badge in-progress">In Progress</span></td></tr>
+                <tr><td>Robert Adams</td><td>Antique Bookcase</td><td>Conservation</td><td>12 Aug</td><td><span class="status-badge pending">Pending</span></td></tr>
+                <tr><td>Margaret Collins</td><td>Georgian Chest</td><td>Full Restoration</td><td>9 Aug</td><td><span class="status-badge review">In Review</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="d-card">
+          <div class="d-card-head"><h4>Quick Actions</h4></div>
+          <div class="d-card-body">
+            <div class="qa-grid">
+              <div class="qa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>New Project</div>
+              <div class="qa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Add Client</div>
+              <div class="qa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>New Invoice</div>
+              <div class="qa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>New Blog Post</div>
+              <div class="qa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Upload Gallery</div>
+              <div class="qa-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>View Reports</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const t=localStorage.getItem('ar-theme')||'light';
+const d=localStorage.getItem('ar-dir')||'ltr';
+document.documentElement.setAttribute('data-theme',t);
+document.documentElement.setAttribute('dir',d);
+const themeBtn=document.getElementById('themeToggle');
+if(themeBtn){themeBtn.addEventListener('click',()=>{
+  const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('ar-theme',next);
+});}
+document.querySelectorAll('.dash-nav-item').forEach(item=>{
+  item.addEventListener('click',function(){
+    document.querySelectorAll('.dash-nav-item').forEach(i=>i.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

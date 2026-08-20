@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon — Artisan Restore</title>
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+<style>
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--walnut);text-align:center;padding:2rem;position:relative;overflow:hidden;}
+.bg-img{position:absolute;inset:0;background:url('https://loremflickr.com/1600/900/furniture,antique?lock=5013') center/cover no-repeat;opacity:0.5;}
+.overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(22,16,10,.95),rgba(60,40,15,.85));}
+.content{position:relative;z-index:1;max-width:600px;}
+.cs-logo{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:3rem;}
+.cs-logo img{width:56px;height:56px;border-radius:50%;border:2px solid var(--primary);}
+.cs-logo span{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--primary-lt);font-weight:700;}
+h1{color:rgba(240,233,216,.95);margin-bottom:.75rem;}
+.cs-sub{color:rgba(240,233,216,.6);font-size:1.05rem;margin-bottom:3rem;line-height:1.7;}
+.countdown{display:flex;gap:1.5rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap;}
+.cd-block{background:rgba(255,255,255,.06);border:1px solid rgba(200,134,10,.2);border-radius:var(--radius-md);padding:1.25rem 1.5rem;min-width:80px;}
+.cd-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--primary-lt);line-height:1;}
+.cd-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(240,233,216,.4);margin-top:.3rem;}
+.cs-form{display:flex;gap:.75rem;max-width:440px;margin:0 auto 2rem;}
+.cs-form input{flex:1;padding:.75rem 1.1rem;background:rgba(255,255,255,.08);border:1.5px solid rgba(200,134,10,.25);border-radius:var(--radius-md);color:var(--white);font-size:.9rem;outline:none;}
+.cs-form input::placeholder{color:rgba(240,233,216,.4);}
+.cs-form input:focus{border-color:var(--primary);}
+.cs-social{display:flex;gap:.75rem;justify-content:center;}
+@media(max-width:480px){.cs-form{flex-direction:column;}.countdown{gap:1rem;}}
+</style>
+</head>
+<body>
+<div class="bg-img"></div>
+<div class="overlay"></div>
+<div class="content">
+  <div class="cs-logo">
+    <img src="images/logo.png" alt="Logo">
+    <span>Artisan Restore</span>
+  </div>
+  <h1>Something Beautiful Is Coming</h1>
+  <p class="cs-sub">We're preparing something special — a new online experience worthy of the craftsmanship we bring to every restoration. Stay tuned.</p>
+  <div class="countdown" id="countdown">
+    <div class="cd-block"><div class="cd-num" id="cd-days">14</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-block"><div class="cd-num" id="cd-hrs">08</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-block"><div class="cd-num" id="cd-min">32</div><div class="cd-lbl">Minutes</div></div>
+    <div class="cd-block"><div class="cd-num" id="cd-sec">00</div><div class="cd-lbl">Seconds</div></div>
+  </div>
+  <p style="color:rgba(240,233,216,.5);font-size:.85rem;margin-bottom:.75rem;">Be the first to know when we launch:</p>
+  <div class="cs-form">
+    <input type="email" placeholder="your@email.com">
+    <button class="btn btn-primary">Notify Me</button>
+  </div>
+  <div class="cs-social">
+    <a href="#" class="ctrl-btn" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(240,233,216,.6);" aria-label="Instagram">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="#" class="ctrl-btn" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(240,233,216,.6);" aria-label="Facebook">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+  </div>
+</div>
+<script>
+const t=localStorage.getItem('ar-theme')||'light';
+document.documentElement.setAttribute('data-theme',t);
+// Countdown
+const launch=new Date(Date.now()+14*24*60*60*1000);
+function tick(){
+  const diff=launch-Date.now();
+  if(diff<=0)return;
+  const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);
+  document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-hrs').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent=String(s).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
