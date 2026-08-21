@@ -49,12 +49,12 @@
 /* §5 TEAM EXPANDED */
 .team-section{background:var(--bg);}
 .team-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}
-.tm-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);}
+.tm-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column;height:100%;}
 .tm-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--primary);}
 .tm-img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top;}
-.tm-body{padding:1.25rem;}
+.tm-body{padding:1.25rem;display:flex;flex-direction:column;flex:1;}
 .tm-body h4{font-size:1rem;margin-bottom:.15rem;}
-.tm-role{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:.4rem;}
+.tm-role{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:.4rem;min-height:2.2rem;}
 .tm-body p{font-size:.8rem;}
 
 /* §6 TESTIMONIALS */
